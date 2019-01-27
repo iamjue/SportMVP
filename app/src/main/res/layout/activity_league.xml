@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LeagueActivity"
+    android:padding="16dp">
+    <LinearLayout
+        android:id="@+id/linear_badge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/img_strBadge"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            />
+        <TextView
+            android:id="@+id/tv_strLeague"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="strLeague"
+            android:layout_marginLeft="10dp"
+            android:textSize="11pt"
+            android:textStyle="bold"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_lsitTeam"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="List of Team "
+        android:layout_below="@id/linear_badge"
+        android:textStyle="bold"
+        android:textSize="13pt"
+        android:layout_marginTop="5dp"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_Team"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_below="@id/tv_lsitTeam"
+        android:layout_marginBottom="2dp"/>
+</RelativeLayout>

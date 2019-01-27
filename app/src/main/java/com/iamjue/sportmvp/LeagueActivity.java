@@ -1,11 +1,13 @@
 package com.iamjue.sportmvp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,7 +18,9 @@ import com.iamjue.sportmvp.ADAPTER.TeamAdapter;
 import com.iamjue.sportmvp.API.LeagueApi;
 import com.iamjue.sportmvp.API.TeamApi;
 import com.iamjue.sportmvp.MODEL.LeagueItem;
+import com.iamjue.sportmvp.MODEL.SquadItem;
 import com.iamjue.sportmvp.MODEL.TeamItem;
+import com.iamjue.sportmvp.OnclickLibrary.ItemClickSupport;
 import com.iamjue.sportmvp.PRESENTER.LeaguePresenter;
 import com.iamjue.sportmvp.PRESENTER.TeamPresenter;
 import com.iamjue.sportmvp.VIEW.MainView;
@@ -50,10 +54,10 @@ public class LeagueActivity extends AppCompatActivity implements MainView {
 
         LeagueItem leagueItem = getIntent().getParcelableExtra( "League" );
         getSupportActionBar().setTitle( leagueItem.getStrCountry() );
+
         Glide.with( this ).load( leagueItem.getStrBadge() ).into( imgBadge );
-
-
         tvLeague.setText( leagueItem.getStrLeague() );
+
         teamAdapter = new TeamAdapter( this );
         teamApi = new TeamApi();
         rvTeam.setLayoutManager( new LinearLayoutManager( this ) );
@@ -69,10 +73,37 @@ public class LeagueActivity extends AppCompatActivity implements MainView {
     }
 
     @Override
-    public void showTeam(ArrayList<TeamItem> teamItem) {
+    public void showTeam(final ArrayList<TeamItem> teamItem) {
         teamAdapter.setTeamItemArrayList( teamItem );
         rvTeam.setAdapter( teamAdapter );
         teamAdapter.notifyDataSetChanged();
+        ItemClickSupport.addTo( rvTeam ).setOnItemClickListener( new ItemClickSupport.OnItemClickListener() {
+            @Override
+            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                Intent intentSquad = new Intent( LeagueActivity.this, TeamActivity.class );
+                TeamItem teamData = new TeamItem( teamItem.get( position ).getStrTeam(),
+                        teamItem.get( position ).getStrLeague(),
+                        teamItem.get( position ).getStrManager(),
+                        teamItem.get( position ).getStrStadium(),
+                        teamItem.get( position ).getStrStadiumDescription(),
+                        teamItem.get( position ).getStrStadiumLocation(),
+                        teamItem.get( position ).getIntStadiumCapacity(),
+                        teamItem.get( position ).getStrDescriptionEN(),
+                        teamItem.get( position ).getStrTeamBadge(),
+                        teamItem.get( position ).getStrTeamJersey(),
+                        teamItem.get( position ).getStrTeamLogo(),
+                        teamItem.get( position ).getStrTeamBanner(),
+                        teamItem.get( position ).getStrAlternate());
+                intentSquad.putExtra( "teamData", teamData );
+                startActivity( intentSquad );
+
+            }
+        } );
+    }
+
+    @Override
+    public void showSquad(ArrayList<SquadItem> squadItem) {
+
     }
 
     @Override

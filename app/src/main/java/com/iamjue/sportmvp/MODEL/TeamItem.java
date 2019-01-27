@@ -5,11 +5,11 @@ import android.os.Parcelable;
 
 public class TeamItem implements Parcelable {
     String strTeam, strLeague,strManager,strStadium,strStadiumDescription,strStadiumLocation,intStadiumCapacity,strDescriptionEN,
-            strTeamBadge,strTeamJersey,strTeamLogo,strTeamBanner;
+            strTeamBadge,strTeamJersey,strTeamLogo,strTeamBanner,strAlternate;
 
     public TeamItem(String strTeam, String strLeague, String strManager, String strStadium, String strStadiumDescription,
                     String strStadiumLocation, String intStadiumCapacity, String strDescriptionEN, String strTeamBadge,
-                    String strTeamJersey, String strTeamLogo, String strTeamBanner) {
+                    String strTeamJersey, String strTeamLogo, String strTeamBanner, String strAlternate) {
         this.strTeam = strTeam;
         this.strLeague = strLeague;
         this.strManager = strManager;
@@ -22,6 +22,7 @@ public class TeamItem implements Parcelable {
         this.strTeamJersey = strTeamJersey;
         this.strTeamLogo = strTeamLogo;
         this.strTeamBanner = strTeamBanner;
+        this.strAlternate = strAlternate;
     }
 
     protected TeamItem(Parcel in) {
@@ -37,6 +38,7 @@ public class TeamItem implements Parcelable {
         strTeamJersey = in.readString();
         strTeamLogo = in.readString();
         strTeamBanner = in.readString();
+        strAlternate = in.readString();
     }
 
     public static final Creator<TeamItem> CREATOR = new Creator<TeamItem>() {
@@ -147,6 +149,14 @@ public class TeamItem implements Parcelable {
         this.strTeamBanner = strTeamBanner;
     }
 
+    public String getStrAlternate() {
+        return strAlternate;
+    }
+
+    public void setStrAlternate(String strAlternate) {
+        this.strAlternate = strAlternate;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -166,5 +176,6 @@ public class TeamItem implements Parcelable {
         parcel.writeString( strTeamJersey );
         parcel.writeString( strTeamLogo );
         parcel.writeString( strTeamBanner );
+        parcel.writeString( strAlternate );
     }
 }

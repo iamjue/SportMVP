@@ -87,7 +87,8 @@ public class TeamPresenter {
                                 teamObject.getString( "strTeamBadge" ),
                                 teamObject.getString( "strTeamJersey" ),
                                 teamObject.getString( "strTeamLogo" ),
-                                teamObject.getString( "strTeamBanner" ) );
+                                teamObject.getString( "strTeamBanner" ),
+                                teamObject.getString( "strAlternate" ));
 
                         teamItemArrayList.add( teamItem );
 

@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">SportMVP</string>
     <string name="name_league">Name League</string>
+    <string name="team_name">Team name</string>
+    <string name="list_squad">List Squad</string>
+    <string name="name_player">Name Player</string>
+    <string name="strteam">strTeam</string>
+    <string name="position">position</string>
 </resources>

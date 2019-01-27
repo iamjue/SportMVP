@@ -10,6 +10,7 @@ import android.view.View;
 import com.iamjue.sportmvp.ADAPTER.LeagueAdapter;
 import com.iamjue.sportmvp.API.LeagueApi;
 import com.iamjue.sportmvp.MODEL.LeagueItem;
+import com.iamjue.sportmvp.MODEL.SquadItem;
 import com.iamjue.sportmvp.MODEL.TeamItem;
 import com.iamjue.sportmvp.OnclickLibrary.ItemClickSupport;
 import com.iamjue.sportmvp.PRESENTER.LeaguePresenter;
@@ -68,6 +69,11 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void showTeam(ArrayList<TeamItem> teamItem) {
+
+    }
+
+    @Override
+    public void showSquad(ArrayList<SquadItem> squadItem) {
 
     }
 }

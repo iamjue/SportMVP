@@ -1,9 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TeamActivity">
-
-</android.support.constraint.ConstraintLayout>
+    tools:context=".TeamActivity"
+    android:padding="6dp">
+    <LinearLayout
+        android:id="@+id/linearlayout_team"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_teamLogo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/colorPrimary"/>
+        <TextView
+            android:id="@+id/tv_nameTeam"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/team_name"
+            android:layout_marginLeft="10dp"
+            android:textSize="11pt"
+            android:textStyle="bold"
+            android:gravity="center_vertical"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_listSquad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/list_squad"
+        android:textSize="13pt"
+        android:textStyle="bold"
+        android:layout_below="@id/linearlayout_team"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_squad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tv_listSquad"/>
+</RelativeLayout>

@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class LeagueItem implements Parcelable {
-    String strLeague,strLogo,strCountry,strDescriptionEN,strPoster,strTrophy,strFanart1,strBadge;
+    String strLeague, strLogo, strCountry, strDescriptionEN, strPoster, strTrophy, strFanart1, strBadge;
 
     public LeagueItem(String strLeague, String strLogo, String strCountry, String strDescriptionEN, String strPoster, String strTrophy, String strFanart1, String strBadge) {
         this.strLeague = strLeague;

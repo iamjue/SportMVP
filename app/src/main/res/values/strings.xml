@@ -6,4 +6,7 @@
     <string name="name_player">Name Player</string>
     <string name="strteam">strTeam</string>
     <string name="position">position</string>
+    <string name="league_logo">League Logo</string>
+    <string name="league_trophy">League Trophy</string>
+    <string name="description_league">Description League</string>
 </resources>

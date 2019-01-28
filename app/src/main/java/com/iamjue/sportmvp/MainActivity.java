@@ -22,7 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements MainView {
-    @BindView( R.id.recyclerView )
+    @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
 
     LeaguePresenter leaguePresenter;
@@ -52,14 +52,14 @@ public class MainActivity extends AppCompatActivity implements MainView {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                 Intent intentleague = new Intent( MainActivity.this, LeagueActivity.class );
-                LeagueItem leagueData = new LeagueItem(leagueItem.get( position ).getStrLeague(),
+                LeagueItem leagueData = new LeagueItem( leagueItem.get( position ).getStrLeague(),
                         leagueItem.get( position ).getStrLogo(),
                         leagueItem.get( position ).getStrCountry(),
                         leagueItem.get( position ).getStrDescriptionEN(),
                         leagueItem.get( position ).getStrPoster(),
                         leagueItem.get( position ).getStrTrophy(),
                         leagueItem.get( position ).getStrFanart1(),
-                        leagueItem.get(position).getStrBadge());
+                        leagueItem.get( position ).getStrBadge() );
 
                 intentleague.putExtra( "League", leagueData );
                 startActivity( intentleague );

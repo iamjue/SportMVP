@@ -31,12 +31,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class LeagueActivity extends AppCompatActivity implements MainView {
-    @BindView( R.id.img_strBadge )
+    @BindView(R.id.img_strBadge)
     ImageView imgBadge;
-    @BindView( R.id.tv_strLeague )
+    @BindView(R.id.tv_strLeague)
     TextView tvLeague;
-    @BindView( R.id.rv_Team )
+    @BindView(R.id.rv_Team)
     RecyclerView rvTeam;
+
+    String nameLeague, fanart, logo, trophy, desc;
 
     TeamPresenter teamPresenter;
     TeamAdapter teamAdapter;
@@ -54,6 +56,12 @@ public class LeagueActivity extends AppCompatActivity implements MainView {
 
         LeagueItem leagueItem = getIntent().getParcelableExtra( "League" );
         getSupportActionBar().setTitle( leagueItem.getStrCountry() );
+        //inisialisai untkuk membawa data ke detail league activity
+        nameLeague = leagueItem.getStrLeague();
+        fanart = leagueItem.getStrFanart1();
+        logo = leagueItem.getStrLogo();
+        trophy = leagueItem.getStrTrophy();
+        desc = leagueItem.getStrDescriptionEN();
 
         Glide.with( this ).load( leagueItem.getStrBadge() ).into( imgBadge );
         tvLeague.setText( leagueItem.getStrLeague() );
@@ -61,7 +69,7 @@ public class LeagueActivity extends AppCompatActivity implements MainView {
         teamAdapter = new TeamAdapter( this );
         teamApi = new TeamApi();
         rvTeam.setLayoutManager( new LinearLayoutManager( this ) );
-        teamPresenter = new TeamPresenter( this, teamApi ,this );
+        teamPresenter = new TeamPresenter( this, teamApi, this );
         teamPresenter.LoadTeam( leagueItem.getStrLeague() );
 
 
@@ -93,7 +101,7 @@ public class LeagueActivity extends AppCompatActivity implements MainView {
                         teamItem.get( position ).getStrTeamJersey(),
                         teamItem.get( position ).getStrTeamLogo(),
                         teamItem.get( position ).getStrTeamBanner(),
-                        teamItem.get( position ).getStrAlternate());
+                        teamItem.get( position ).getStrAlternate() );
                 intentSquad.putExtra( "teamData", teamData );
                 startActivity( intentSquad );
 
@@ -108,15 +116,23 @@ public class LeagueActivity extends AppCompatActivity implements MainView {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate( R.menu.menu_league,menu );
+        getMenuInflater().inflate( R.menu.menu_league, menu );
         return super.onCreateOptionsMenu( menu );
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.menu_league_detail:
-                Toast.makeText( this, "Detail League", Toast.LENGTH_SHORT ).show();
+                Intent intentDetail = new Intent( this, DetailLeagueActivity.class );
+                //yang di inisialisai di atas di panggil di sini, untuk di bawa ke activity lain
+                intentDetail.putExtra( DetailLeagueActivity.EXTRA_NAME, nameLeague );
+                intentDetail.putExtra( DetailLeagueActivity.EXTRA_FANART, fanart );
+                intentDetail.putExtra( DetailLeagueActivity.EXTRA_LOGO, logo );
+                intentDetail.putExtra( DetailLeagueActivity.EXTRA_TROPHY, trophy );
+                intentDetail.putExtra( DetailLeagueActivity.EXTRA_DESC, desc );
+                startActivity( intentDetail );
+                Toast.makeText( this, nameLeague + " Description", Toast.LENGTH_SHORT ).show();
                 break;
         }
         return super.onOptionsItemSelected( item );

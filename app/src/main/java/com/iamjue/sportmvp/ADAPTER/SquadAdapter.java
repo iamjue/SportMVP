@@ -1,6 +1,7 @@
 package com.iamjue.sportmvp.ADAPTER;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,6 +18,8 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.iamjue.sportmvp.R.drawable.ic_sentiment_satisfied;
 
 public class SquadAdapter extends RecyclerView.Adapter<SquadAdapter.ViewHolder> {
     private ArrayList<SquadItem> squadItemArrayList;
@@ -43,9 +46,20 @@ public class SquadAdapter extends RecyclerView.Adapter<SquadAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Glide.with( context).load( getSquadItemArrayList().get( i ).getStrCutout() ).into( viewHolder.imgPlayer );
+
         viewHolder.tvPosition.setText( getSquadItemArrayList().get( i ).getStrPosition() );
         viewHolder.tvNamePlayer.setText( getSquadItemArrayList().get( i ).getStrPlayer() );
+        String haveData = getSquadItemArrayList().get( i ).getStrCutout();
+        String noData ="null";
+
+        if (haveData == noData) {
+            viewHolder.imgPlayer.setImageResource( R.drawable.ic_sentiment_satisfied );
+
+        }else {
+
+            Glide.with( context).load( getSquadItemArrayList().get( i ).getStrCutout() ).into( viewHolder.imgPlayer );
+        }
+
     }
 
     @Override

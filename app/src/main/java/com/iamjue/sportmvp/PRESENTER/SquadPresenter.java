@@ -9,7 +9,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.iamjue.sportmvp.API.SquadApi;
+import com.iamjue.sportmvp.API.ApiTheSportDb;
 import com.iamjue.sportmvp.MODEL.SquadItem;
 import com.iamjue.sportmvp.VIEW.MainView;
 
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class SquadPresenter {
     MainView view;
     StringRequest stringRequest;
-    SquadApi squadApi;
+    ApiTheSportDb apiTheSportDb;
     Context context;
 
     public MainView getView() {
@@ -40,12 +40,12 @@ public class SquadPresenter {
         this.stringRequest = stringRequest;
     }
 
-    public SquadApi getSquadApi() {
-        return squadApi;
+    public ApiTheSportDb getApiTheSportDb() {
+        return apiTheSportDb;
     }
 
-    public void setSquadApi(SquadApi squadApi) {
-        this.squadApi = squadApi;
+    public void setApiTheSportDb(ApiTheSportDb apiTheSportDb) {
+        this.apiTheSportDb = apiTheSportDb;
     }
 
     public Context getContext() {
@@ -56,13 +56,14 @@ public class SquadPresenter {
         this.context = context;
     }
 
-    public SquadPresenter(MainView view, SquadApi squadApi, Context context) {
+    public SquadPresenter(MainView view, ApiTheSportDb apiTheSportDb, Context context) {
         this.view = view;
-        this.squadApi = squadApi;
+        this.apiTheSportDb = apiTheSportDb;
         this.context = context;
     }
+
     public void LoadSquad(String string){
-        String URL = squadApi.getSquad( string );
+        String URL = apiTheSportDb.getSquad( string );
         final ArrayList<SquadItem>squadItemArrayList = new ArrayList<>(  );
 
         StringRequest stringRequest = new StringRequest( Request.Method.GET, URL, new Response.Listener<String>() {

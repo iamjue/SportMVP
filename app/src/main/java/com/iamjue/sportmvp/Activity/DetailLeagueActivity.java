@@ -1,4 +1,4 @@
-package com.iamjue.sportmvp;
+package com.iamjue.sportmvp.Activity;
 
 import android.support.v4.app.SupportActivity.ExtraData;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.iamjue.sportmvp.MODEL.LeagueItem;
+import com.iamjue.sportmvp.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

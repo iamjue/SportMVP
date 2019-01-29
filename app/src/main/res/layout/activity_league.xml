@@ -4,43 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LeagueActivity"
-    android:padding="16dp">
+    tools:context=".Activity.LeagueActivity">
+
     <LinearLayout
         android:id="@+id/linear_badge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:padding="3dp">
+
         <ImageView
             android:id="@+id/img_strBadge"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            />
+            android:layout_height="50dp" />
+
         <TextView
             android:id="@+id/tv_strLeague"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="strLeague"
             android:layout_marginLeft="10dp"
-            android:textSize="11pt"
-            android:textStyle="bold"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:text="strLeague"
+            android:textColor="#ffff"
+            android:textSize="11pt" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_lsitTeam"
+    <LinearLayout
+        android:id="@+id/linearlayout_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="List of Team "
         android:layout_below="@id/linear_badge"
-        android:textStyle="bold"
-        android:textSize="13pt"
-        android:layout_marginTop="5dp"/>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_Team"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5dp"
-        android:layout_below="@id/tv_lsitTeam"
-        android:layout_marginBottom="2dp"/>
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <TextView
+            android:id="@+id/tv_lsitTeam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="@string/list_of_team"
+            android:textSize="13pt"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_Team"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="2dp" />
+    </LinearLayout>
+
 </RelativeLayout>

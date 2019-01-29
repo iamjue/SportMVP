@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.iamjue.sportmvp.MODEL.LeagueItem;
-import com.iamjue.sportmvp.MainActivity;
 import com.iamjue.sportmvp.R;
 
 import java.util.ArrayList;
@@ -38,13 +37,24 @@ public class LeagueAdapter extends RecyclerView.Adapter<LeagueAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from( viewGroup.getContext() ).inflate( R.layout.row_league,viewGroup, false );
+        View view = LayoutInflater.from( viewGroup.getContext() ).inflate( R.layout.row_league, viewGroup, false );
         return new ViewHolder( view );
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Glide.with( context).load( getLeagueItems().get( i ).getStrLogo() ).into( viewHolder.imgPhotoLeague );
+        Glide.with( context ).load( getLeagueItems().get( i ).getStrLogo() ).into( viewHolder.imgPhotoLeague );
+        viewHolder.tvNameLeague.setText( getLeagueItems().get( i ).getStrLeague() );
+        String haveData = getLeagueItems().get( i ).getStrLogo();
+        String noData = "null";
+        if (haveData == noData) {
+            viewHolder.tvNameLeague.setVisibility( View.VISIBLE );
+            viewHolder.imgPhotoLeague.setVisibility( View.INVISIBLE );
+        } else if (haveData != noData) {
+            viewHolder.tvNameLeague.setVisibility( View.INVISIBLE );
+            viewHolder.imgPhotoLeague.setVisibility( View.VISIBLE );
+        }
+
 
     }
 
@@ -54,8 +64,11 @@ public class LeagueAdapter extends RecyclerView.Adapter<LeagueAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView( R.id.img_photoLeague )
+        @BindView(R.id.img_photoLeague)
         ImageView imgPhotoLeague;
+        @BindView(R.id.tv_nameLeague)
+        TextView tvNameLeague;
+
         public ViewHolder(@NonNull View itemView) {
             super( itemView );
             ButterKnife.bind( this, itemView );

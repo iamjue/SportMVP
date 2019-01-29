@@ -9,4 +9,5 @@
     <string name="league_logo">League Logo</string>
     <string name="league_trophy">League Trophy</string>
     <string name="description_league">Description League</string>
+    <string name="list_of_team">List of Team</string>
 </resources>

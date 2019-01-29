@@ -4,41 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TeamActivity"
-    android:padding="6dp">
+    tools:context=".Activity.TeamActivity">
+
     <LinearLayout
         android:id="@+id/linearlayout_team"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:padding="3dp">
+
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_teamLogo"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@color/colorPrimary"/>
+            android:layout_height="50dp" />
+
         <TextView
             android:id="@+id/tv_nameTeam"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@string/team_name"
             android:layout_marginLeft="10dp"
-            android:textSize="11pt"
-            android:textStyle="bold"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:text="@string/team_name"
+            android:textColor="#ffffff"
+            android:textSize="11pt" />
     </LinearLayout>
-    <TextView
-        android:id="@+id/tv_listSquad"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/list_squad"
-        android:textSize="13pt"
-        android:textStyle="bold"
         android:layout_below="@id/linearlayout_team"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"/>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_squad"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/tv_listSquad"/>
+        android:orientation="vertical"
+        android:padding="3dp">
+
+        <TextView
+            android:id="@+id/tv_listSquad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/list_squad"
+            android:textSize="13pt"
+            android:textStyle="bold" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_squad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
 </RelativeLayout>

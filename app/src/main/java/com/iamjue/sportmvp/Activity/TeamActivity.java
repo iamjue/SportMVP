@@ -1,4 +1,4 @@
-package com.iamjue.sportmvp;
+package com.iamjue.sportmvp.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,14 +11,12 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.iamjue.sportmvp.ADAPTER.SquadAdapter;
-import com.iamjue.sportmvp.ADAPTER.TeamAdapter;
-import com.iamjue.sportmvp.API.SquadApi;
-import com.iamjue.sportmvp.API.TeamApi;
+import com.iamjue.sportmvp.API.ApiTheSportDb;
 import com.iamjue.sportmvp.MODEL.LeagueItem;
 import com.iamjue.sportmvp.MODEL.SquadItem;
 import com.iamjue.sportmvp.MODEL.TeamItem;
 import com.iamjue.sportmvp.PRESENTER.SquadPresenter;
-import com.iamjue.sportmvp.PRESENTER.TeamPresenter;
+import com.iamjue.sportmvp.R;
 import com.iamjue.sportmvp.VIEW.MainView;
 
 import java.util.ArrayList;
@@ -37,7 +35,7 @@ public class TeamActivity extends AppCompatActivity implements MainView {
 
     SquadPresenter squadPresenter;
     SquadAdapter squadAdapter;
-    SquadApi squadApi;
+    ApiTheSportDb apiTheSportDb;
 
 
     @Override
@@ -51,15 +49,17 @@ public class TeamActivity extends AppCompatActivity implements MainView {
 
         TeamItem teamItem = getIntent().getParcelableExtra( "teamData" );
 
+        //actionBar
         getSupportActionBar().setTitle( teamItem.getStrTeam() );
+
         tvTeam.setText( teamItem.getStrTeam() );
         Glide.with( this ).load( teamItem.getStrTeamBadge() ).into( imgTeamLogo );
 
 
         squadAdapter = new SquadAdapter( this );
-        squadApi = new SquadApi();
+        apiTheSportDb = new ApiTheSportDb();
         rvSquad.setLayoutManager( new LinearLayoutManager( this ) );
-        squadPresenter = new SquadPresenter( this, squadApi ,this );
+        squadPresenter = new SquadPresenter( this, apiTheSportDb ,this );
         squadPresenter.LoadSquad( teamItem.getStrTeam() );
 
 

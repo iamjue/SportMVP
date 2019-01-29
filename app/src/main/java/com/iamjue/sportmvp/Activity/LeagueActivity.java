@@ -1,4 +1,4 @@
-package com.iamjue.sportmvp;
+package com.iamjue.sportmvp.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -13,16 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.iamjue.sportmvp.ADAPTER.LeagueAdapter;
 import com.iamjue.sportmvp.ADAPTER.TeamAdapter;
-import com.iamjue.sportmvp.API.LeagueApi;
-import com.iamjue.sportmvp.API.TeamApi;
+import com.iamjue.sportmvp.API.ApiTheSportDb;
 import com.iamjue.sportmvp.MODEL.LeagueItem;
 import com.iamjue.sportmvp.MODEL.SquadItem;
 import com.iamjue.sportmvp.MODEL.TeamItem;
 import com.iamjue.sportmvp.OnclickLibrary.ItemClickSupport;
-import com.iamjue.sportmvp.PRESENTER.LeaguePresenter;
 import com.iamjue.sportmvp.PRESENTER.TeamPresenter;
+import com.iamjue.sportmvp.R;
 import com.iamjue.sportmvp.VIEW.MainView;
 
 import java.util.ArrayList;
@@ -42,7 +40,7 @@ public class LeagueActivity extends AppCompatActivity implements MainView {
 
     TeamPresenter teamPresenter;
     TeamAdapter teamAdapter;
-    TeamApi teamApi;
+    ApiTheSportDb apiTheSportDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,9 +65,9 @@ public class LeagueActivity extends AppCompatActivity implements MainView {
         tvLeague.setText( leagueItem.getStrLeague() );
 
         teamAdapter = new TeamAdapter( this );
-        teamApi = new TeamApi();
+        apiTheSportDb = new ApiTheSportDb();
         rvTeam.setLayoutManager( new LinearLayoutManager( this ) );
-        teamPresenter = new TeamPresenter( this, teamApi, this );
+        teamPresenter = new TeamPresenter( this, apiTheSportDb, this );
         teamPresenter.LoadTeam( leagueItem.getStrLeague() );
 
 

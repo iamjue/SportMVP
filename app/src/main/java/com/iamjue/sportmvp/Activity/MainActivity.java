@@ -1,4 +1,4 @@
-package com.iamjue.sportmvp;
+package com.iamjue.sportmvp.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,12 +8,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.iamjue.sportmvp.ADAPTER.LeagueAdapter;
-import com.iamjue.sportmvp.API.LeagueApi;
+import com.iamjue.sportmvp.API.ApiTheSportDb;
 import com.iamjue.sportmvp.MODEL.LeagueItem;
 import com.iamjue.sportmvp.MODEL.SquadItem;
 import com.iamjue.sportmvp.MODEL.TeamItem;
 import com.iamjue.sportmvp.OnclickLibrary.ItemClickSupport;
 import com.iamjue.sportmvp.PRESENTER.LeaguePresenter;
+import com.iamjue.sportmvp.R;
 import com.iamjue.sportmvp.VIEW.MainView;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements MainView {
 
     LeaguePresenter leaguePresenter;
     LeagueAdapter leagueAdapter;
-    LeagueApi leagueApi;
+    ApiTheSportDb apiTheSportDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +37,9 @@ public class MainActivity extends AppCompatActivity implements MainView {
         ButterKnife.bind( this );
 
         leagueAdapter = new LeagueAdapter( this );
-        leagueApi = new LeagueApi();
+        apiTheSportDb = new ApiTheSportDb();
         recyclerView.setLayoutManager( new LinearLayoutManager( this ) );
-        leaguePresenter = new LeaguePresenter( this, this, leagueApi );
+        leaguePresenter = new LeaguePresenter( this, this, apiTheSportDb );
         leaguePresenter.Load( "soccer" );
 
     }

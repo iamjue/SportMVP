@@ -5,11 +5,14 @@ import android.os.Parcelable;
 
 public class TeamItem implements Parcelable {
     String strTeam, strLeague,strManager,strStadium,strStadiumDescription,strStadiumLocation,intStadiumCapacity,strDescriptionEN,
-            strTeamBadge,strTeamJersey,strTeamLogo,strTeamBanner,strAlternate;
+            strTeamBadge,strTeamJersey,strTeamLogo,strTeamBanner,strAlternate,strStadiumThumb,strFacebook,strTwitter,strInstagram,
+            strYoutube,strTeamFanart1,strWebsite;
 
     public TeamItem(String strTeam, String strLeague, String strManager, String strStadium, String strStadiumDescription,
                     String strStadiumLocation, String intStadiumCapacity, String strDescriptionEN, String strTeamBadge,
-                    String strTeamJersey, String strTeamLogo, String strTeamBanner, String strAlternate) {
+                    String strTeamJersey, String strTeamLogo, String strTeamBanner, String strAlternate, String strStadiumThumb,
+                    String strFacebook, String strTwitter, String strInstagram, String strYoutube, String strTeamFanart1,
+                    String strWebsite) {
         this.strTeam = strTeam;
         this.strLeague = strLeague;
         this.strManager = strManager;
@@ -23,6 +26,13 @@ public class TeamItem implements Parcelable {
         this.strTeamLogo = strTeamLogo;
         this.strTeamBanner = strTeamBanner;
         this.strAlternate = strAlternate;
+        this.strStadiumThumb = strStadiumThumb;
+        this.strFacebook = strFacebook;
+        this.strTwitter = strTwitter;
+        this.strInstagram = strInstagram;
+        this.strYoutube = strYoutube;
+        this.strTeamFanart1 = strTeamFanart1;
+        this.strWebsite = strWebsite;
     }
 
     protected TeamItem(Parcel in) {
@@ -39,6 +49,13 @@ public class TeamItem implements Parcelable {
         strTeamLogo = in.readString();
         strTeamBanner = in.readString();
         strAlternate = in.readString();
+        strStadiumThumb = in.readString();
+        strFacebook = in.readString();
+        strTwitter = in.readString();
+        strInstagram = in.readString();
+        strYoutube = in.readString();
+        strTeamFanart1 = in.readString();
+        strWebsite = in.readString();
     }
 
     public static final Creator<TeamItem> CREATOR = new Creator<TeamItem>() {
@@ -157,6 +174,62 @@ public class TeamItem implements Parcelable {
         this.strAlternate = strAlternate;
     }
 
+    public String getStrStadiumThumb() {
+        return strStadiumThumb;
+    }
+
+    public void setStrStadiumThumb(String strStadiumThumb) {
+        this.strStadiumThumb = strStadiumThumb;
+    }
+
+    public String getStrFacebook() {
+        return strFacebook;
+    }
+
+    public void setStrFacebook(String strFacebook) {
+        this.strFacebook = strFacebook;
+    }
+
+    public String getStrTwitter() {
+        return strTwitter;
+    }
+
+    public void setStrTwitter(String strTwitter) {
+        this.strTwitter = strTwitter;
+    }
+
+    public String getStrInstagram() {
+        return strInstagram;
+    }
+
+    public void setStrInstagram(String strInstagram) {
+        this.strInstagram = strInstagram;
+    }
+
+    public String getStrYoutube() {
+        return strYoutube;
+    }
+
+    public void setStrYoutube(String strYoutube) {
+        this.strYoutube = strYoutube;
+    }
+
+    public String getStrTeamFanart1() {
+        return strTeamFanart1;
+    }
+
+    public void setStrTeamFanart1(String strTeamFanart1) {
+        this.strTeamFanart1 = strTeamFanart1;
+    }
+
+    public String getStrWebsite() {
+        return strWebsite;
+    }
+
+    public void setStrWebsite(String strWebsite) {
+        this.strWebsite = strWebsite;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -177,5 +250,12 @@ public class TeamItem implements Parcelable {
         parcel.writeString( strTeamLogo );
         parcel.writeString( strTeamBanner );
         parcel.writeString( strAlternate );
+        parcel.writeString( strStadiumThumb );
+        parcel.writeString( strFacebook );
+        parcel.writeString( strTwitter );
+        parcel.writeString( strInstagram );
+        parcel.writeString( strYoutube );
+        parcel.writeString( strTeamFanart1 );
+        parcel.writeString( strWebsite );
     }
 }

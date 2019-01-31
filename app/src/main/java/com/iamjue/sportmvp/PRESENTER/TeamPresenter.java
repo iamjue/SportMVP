@@ -87,7 +87,15 @@ public class TeamPresenter {
                                 teamObject.getString( "strTeamJersey" ),
                                 teamObject.getString( "strTeamLogo" ),
                                 teamObject.getString( "strTeamBanner" ),
-                                teamObject.getString( "strAlternate" ));
+                                teamObject.getString( "strAlternate" ),
+                                teamObject.getString( "strStadiumThumb" ),
+                                teamObject.getString( "strFacebook" ),
+                                teamObject.getString( "strTwitter" ),
+                                teamObject.getString( "strInstagram" ),
+                                teamObject.getString( "strYoutube" ),
+                                teamObject.getString( "strTeamFanart1" ),
+                                teamObject.getString( "strWebsite" ));
+
 
                         teamItemArrayList.add( teamItem );
 

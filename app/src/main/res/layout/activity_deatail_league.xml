@@ -39,7 +39,8 @@
             <ImageView
                 android:id="@+id/img_leagueLogo"
                 android:layout_width="match_parent"
-                android:layout_height="150dp" />
+                android:layout_height="150dp"
+                android:background="#00bfa5" />
 
             <TextView
                 android:id="@+id/tv_leagueLogo"
@@ -60,7 +61,8 @@
             <ImageView
                 android:id="@+id/img_leagueTrophy"
                 android:layout_width="match_parent"
-                android:layout_height="150dp" />
+                android:layout_height="150dp"
+                android:background="#00bfa5" />
 
             <TextView
                 android:id="@+id/tv_leagueTrophy"

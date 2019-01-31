@@ -1,5 +1,6 @@
 package com.iamjue.sportmvp.Activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,6 +38,10 @@ public class TeamActivity extends AppCompatActivity implements MainView {
     SquadAdapter squadAdapter;
     ApiTheSportDb apiTheSportDb;
 
+    String strTeam, strManager, strStadium, strStadiumDescription, strStadiumLocation, intStadiumCapacity, strDescriptionEN,
+            strTeamBadge, strTeamJersey, strTeamBanner, strStadiumThumb, strFacebook, strTwitter, strInstagram, strYoutube, strTeamFanart1,
+            strWebsite, country;
+    public static String EXTRA_TITLE_COUNTRY = "extra_title_country";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +54,25 @@ public class TeamActivity extends AppCompatActivity implements MainView {
 
         TeamItem teamItem = getIntent().getParcelableExtra( "teamData" );
 
+        strTeam = teamItem.getStrTeam();
+        strManager = teamItem.getStrManager();
+        strStadium = teamItem.getStrStadium();
+        strStadiumDescription = teamItem.getStrStadiumDescription();
+        strStadiumLocation = teamItem.getStrStadiumLocation();
+        intStadiumCapacity = teamItem.getIntStadiumCapacity();
+        strDescriptionEN = teamItem.getStrDescriptionEN();
+        strTeamBadge = teamItem.getStrTeamBadge();
+        strTeamJersey = teamItem.getStrTeamJersey();
+        strTeamBanner = teamItem.getStrTeamBanner();
+        strStadiumThumb = teamItem.getStrStadiumThumb();
+        strFacebook = teamItem.getStrFacebook();
+        strTwitter = teamItem.getStrTwitter();
+        strInstagram = teamItem.getStrInstagram();
+        strYoutube = teamItem.getStrYoutube();
+        strTeamFanart1 = teamItem.getStrTeamFanart1();
+        strWebsite = teamItem.getStrWebsite();
+        country = getIntent().getStringExtra( EXTRA_TITLE_COUNTRY );
+
         //actionBar
         getSupportActionBar().setTitle( teamItem.getStrTeam() );
 
@@ -59,7 +83,7 @@ public class TeamActivity extends AppCompatActivity implements MainView {
         squadAdapter = new SquadAdapter( this );
         apiTheSportDb = new ApiTheSportDb();
         rvSquad.setLayoutManager( new LinearLayoutManager( this ) );
-        squadPresenter = new SquadPresenter( this, apiTheSportDb ,this );
+        squadPresenter = new SquadPresenter( this, apiTheSportDb, this );
         squadPresenter.LoadSquad( teamItem.getStrTeam() );
 
 
@@ -75,7 +99,28 @@ public class TeamActivity extends AppCompatActivity implements MainView {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_team_detail:
-                Toast.makeText( this, "detail team", Toast.LENGTH_SHORT ).show();
+                Intent intent = new Intent( this, DetailTeamActivity.class );
+                //yang di inisialisai di atas di panggil di sini, untuk di bawa ke activity lain
+                intent.putExtra( DetailTeamActivity.EXTRA_NAME, strTeam );
+                intent.putExtra( DetailTeamActivity.EXTRA_MANAGER, strManager );
+                intent.putExtra( DetailTeamActivity.EXTRA_STADIUM_NAME, strStadium );
+                intent.putExtra( DetailTeamActivity.EXTRA_STADIUM_CAPACITY, intStadiumCapacity );
+                intent.putExtra( DetailTeamActivity.EXTRA_STADIUM_LOCATION, strStadiumLocation );
+                intent.putExtra( DetailTeamActivity.EXTRA_STADIUM_DESC, strStadiumDescription );
+                intent.putExtra( DetailTeamActivity.EXTRA_STADIUM_THUMB, strStadiumThumb );
+                intent.putExtra( DetailTeamActivity.EXTRA_DESC, strDescriptionEN );
+                intent.putExtra( DetailTeamActivity.EXTRA_JERSEY, strTeamJersey );
+                intent.putExtra( DetailTeamActivity.EXTRA_BADGE, strTeamBadge );
+                intent.putExtra( DetailTeamActivity.EXTRA_BANNER, strTeamBanner );
+                intent.putExtra( DetailTeamActivity.EXTRA_FB, strFacebook );
+                intent.putExtra( DetailTeamActivity.EXTRA_IG, strInstagram );
+                intent.putExtra( DetailTeamActivity.EXTRA_YOUTUBE, strYoutube );
+                intent.putExtra( DetailTeamActivity.EXTRA_TW, strTwitter );
+                intent.putExtra( DetailTeamActivity.EXTRA_WEBSITE, strWebsite );
+                intent.putExtra( DetailTeamActivity.EXTRA_FANART, strTeamFanart1 );
+                intent.putExtra( DetailTeamActivity.EXTRA_COUNTRY, country );
+                startActivity( intent );
+                Toast.makeText( this, strTeam + " description", Toast.LENGTH_SHORT ).show();
                 break;
         }
         return super.onOptionsItemSelected( item );
@@ -93,7 +138,7 @@ public class TeamActivity extends AppCompatActivity implements MainView {
 
     @Override
     public void showSquad(ArrayList<SquadItem> squadItem) {
-        squadAdapter.setSquadItemArrayList( squadItem);
+        squadAdapter.setSquadItemArrayList( squadItem );
         rvSquad.setAdapter( squadAdapter );
         squadAdapter.notifyDataSetChanged();
 

@@ -10,4 +10,16 @@
     <string name="league_trophy">League Trophy</string>
     <string name="description_league">Description League</string>
     <string name="list_of_team">List of Team</string>
+    <string name="website">Website</string>
+    <string name="facebook">Facebook</string>
+    <string name="twitter">Twitter</string>
+    <string name="name_manager">Name Manager</string>
+    <string name="description_team">Description Team</string>
+    <string name="team_stadion">Team Stadion</string>
+    <string name="youtube">Youtube</string>
+    <string name="instagram">Instagram</string>
+    <string name="stadium_location">Stadium Location</string>
+    <string name="stadium_capacity">Stadium Capacity</string>
+    <string name="description_stadium">Description Stadium</string>
+    <string name="banner_not_found">banner not found</string>
 </resources>

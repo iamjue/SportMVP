@@ -1,12 +1,16 @@
 package com.iamjue.sportmvp.Activity;
 
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.SupportActivity.ExtraData;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.ViewTarget;
 import com.iamjue.sportmvp.MODEL.LeagueItem;
 import com.iamjue.sportmvp.R;
 
@@ -23,6 +27,7 @@ public class DetailLeagueActivity extends AppCompatActivity {
     ImageView imgLeagueLogo;
     @BindView(R.id.img_leagueTrophy)
     ImageView imgLeagueTrophy;
+
     public static String EXTRA_NAME = "extra_name";
     public static String EXTRA_FANART = "extra_fanart";
     public static String EXTRA_LOGO = "extra_logo";
@@ -40,6 +45,7 @@ public class DetailLeagueActivity extends AppCompatActivity {
         imgLeagueLogo = findViewById( R.id.img_leagueLogo );
         imgLeagueTrophy = findViewById( R.id.img_leagueTrophy );
 
+
         getSupportActionBar().setTitle( getIntent().getStringExtra( EXTRA_NAME ) );
         tvLeagueDesc.setText( getIntent().getStringExtra( EXTRA_DESC ) );
         Glide.with( this )
@@ -51,7 +57,5 @@ public class DetailLeagueActivity extends AppCompatActivity {
         Glide.with( this )
                 .load( getIntent().getStringExtra( EXTRA_TROPHY ) )
                 .into( imgLeagueTrophy );
-
-
     }
 }

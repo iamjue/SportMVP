@@ -36,7 +36,7 @@ public class LeagueActivity extends AppCompatActivity implements MainView {
     @BindView(R.id.rv_Team)
     RecyclerView rvTeam;
 
-    String nameLeague, fanart, logo, trophy, desc;
+    String nameLeague, fanart, logo, trophy, desc, titleCountry;
 
     TeamPresenter teamPresenter;
     TeamAdapter teamAdapter;
@@ -53,7 +53,8 @@ public class LeagueActivity extends AppCompatActivity implements MainView {
 
 
         LeagueItem leagueItem = getIntent().getParcelableExtra( "League" );
-        getSupportActionBar().setTitle( leagueItem.getStrCountry() );
+        titleCountry = leagueItem.getStrCountry();
+        getSupportActionBar().setTitle( titleCountry );
         //inisialisai untkuk membawa data ke detail league activity
         nameLeague = leagueItem.getStrLeague();
         fanart = leagueItem.getStrFanart1();
@@ -87,6 +88,7 @@ public class LeagueActivity extends AppCompatActivity implements MainView {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                 Intent intentSquad = new Intent( LeagueActivity.this, TeamActivity.class );
+                intentSquad.putExtra( TeamActivity.EXTRA_TITLE_COUNTRY, titleCountry );
                 TeamItem teamData = new TeamItem( teamItem.get( position ).getStrTeam(),
                         teamItem.get( position ).getStrLeague(),
                         teamItem.get( position ).getStrManager(),
@@ -99,7 +101,15 @@ public class LeagueActivity extends AppCompatActivity implements MainView {
                         teamItem.get( position ).getStrTeamJersey(),
                         teamItem.get( position ).getStrTeamLogo(),
                         teamItem.get( position ).getStrTeamBanner(),
-                        teamItem.get( position ).getStrAlternate() );
+                        teamItem.get( position ).getStrAlternate(),
+                        teamItem.get( position ).getStrStadiumThumb(),
+                        teamItem.get( position ).getStrFacebook(),
+                        teamItem.get( position ).getStrTwitter(),
+                        teamItem.get( position ).getStrInstagram(),
+                        teamItem.get( position ).getStrYoutube(),
+                        teamItem.get( position ).getStrTeamFanart1(),
+                        teamItem.get( position ).getStrWebsite() );
+
                 intentSquad.putExtra( "teamData", teamData );
                 startActivity( intentSquad );
 

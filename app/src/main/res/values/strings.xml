@@ -5,7 +5,7 @@
     <string name="list_squad">List Squad</string>
     <string name="name_player">Name Player</string>
     <string name="strteam">strTeam</string>
-    <string name="position">position</string>
+    <string name="position">Position :</string>
     <string name="league_logo">League Logo</string>
     <string name="league_trophy">League Trophy</string>
     <string name="description_league">Description League</string>
@@ -22,4 +22,12 @@
     <string name="stadium_capacity">Stadium Capacity</string>
     <string name="description_stadium">Description Stadium</string>
     <string name="banner_not_found">banner not found</string>
+    <string name="player_name_squad">Player Name : </string>
+    <string name="nationality">Nationality : </string>
+    <string name="place_date_of_birth">Place Date of Birth :</string>
+    <string name="date_signed">Date Signed :</string>
+    <string name="transfer_fee">Transfer Fee :</string>
+    <string name="salary">Salary :</string>
+    <string name="height_and_weight">Height and Weight :</string>
+    <string name="player_descripton">Player Descripton</string>
 </resources>

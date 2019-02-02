@@ -86,7 +86,11 @@ public class SquadPresenter {
                                 squadObject.getString( "strHeight" ),
                                 squadObject.getString( "strWeight" ),
                                 squadObject.getString( "strThumb" ),
-                                squadObject.getString( "strCutout" ) );
+                                squadObject.getString( "strCutout" ),
+                                squadObject.getString(  "strWage"),
+                                squadObject.getString( "strFacebook" ),
+                                squadObject.getString( "strTwitter" ),
+                                squadObject.getString(  "strInstagram") );
                         squadItemArrayList.add( squadItem );
                     }
                     view.showSquad( squadItemArrayList );

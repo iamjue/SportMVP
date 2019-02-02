@@ -5,9 +5,9 @@ import android.os.Parcelable;
 
 public class SquadItem implements Parcelable {
    String strNationality,strPlayer,strTeam,dateBorn,dateSigned,strSigning,strBirthLocation,strDescriptionEN,strPosition,
-           strHeight,strWeight,strThumb,strCutout;
+           strHeight,strWeight,strThumb,strCutout,strWage,strFacebook,strTwitter,strInstagram;
 
-    public SquadItem(String strNationality, String strPlayer, String strTeam, String dateBorn, String dateSigned, String strSigning, String strBirthLocation, String strDescriptionEN, String strPosition, String strHeight, String strWeight, String strThumb, String strCutout) {
+    public SquadItem(String strNationality, String strPlayer, String strTeam, String dateBorn, String dateSigned, String strSigning, String strBirthLocation, String strDescriptionEN, String strPosition, String strHeight, String strWeight, String strThumb, String strCutout, String strWage, String strFacebook, String strTwitter, String strInstagram) {
         this.strNationality = strNationality;
         this.strPlayer = strPlayer;
         this.strTeam = strTeam;
@@ -21,6 +21,11 @@ public class SquadItem implements Parcelable {
         this.strWeight = strWeight;
         this.strThumb = strThumb;
         this.strCutout = strCutout;
+        this.strWage = strWage;
+        this.strFacebook = strFacebook;
+        this.strTwitter = strTwitter;
+        this.strInstagram = strInstagram;
+
     }
 
     protected SquadItem(Parcel in) {
@@ -37,6 +42,10 @@ public class SquadItem implements Parcelable {
         strWeight = in.readString();
         strThumb = in.readString();
         strCutout = in.readString();
+        strWage = in.readString();
+        strFacebook = in.readString();
+        strTwitter = in.readString();
+        strInstagram = in.readString();
     }
 
     public static final Creator<SquadItem> CREATOR = new Creator<SquadItem>() {
@@ -155,6 +164,38 @@ public class SquadItem implements Parcelable {
         this.strCutout = strCutout;
     }
 
+    public String getStrWage() {
+        return strWage;
+    }
+
+    public void setStrWage(String strWage) {
+        this.strWage = strWage;
+    }
+
+    public String getStrFacebook() {
+        return strFacebook;
+    }
+
+    public void setStrFacebook(String strFacebook) {
+        this.strFacebook = strFacebook;
+    }
+
+    public String getStrTwitter() {
+        return strTwitter;
+    }
+
+    public void setStrTwitter(String strTwitter) {
+        this.strTwitter = strTwitter;
+    }
+
+    public String getStrInstagram() {
+        return strInstagram;
+    }
+
+    public void setStrInstagram(String strInstagram) {
+        this.strInstagram = strInstagram;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -175,5 +216,9 @@ public class SquadItem implements Parcelable {
         parcel.writeString( strWeight );
         parcel.writeString( strThumb );
         parcel.writeString( strCutout );
+        parcel.writeString( strWage );
+        parcel.writeString( strFacebook );
+        parcel.writeString( strTwitter );
+        parcel.writeString( strInstagram );
     }
 }

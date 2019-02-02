@@ -21,7 +21,8 @@
         <activity android:name=".Activity.LeagueActivity" />
         <activity android:name=".Activity.TeamActivity" />
         <activity android:name=".Activity.DetailLeagueActivity" />
-        <activity android:name=".Activity.DetailTeamActivity"></activity>
+        <activity android:name=".Activity.DetailTeamActivity" />
+        <activity android:name=".Activity.DetailSquadActivity"></activity>
     </application>
 
 </manifest>

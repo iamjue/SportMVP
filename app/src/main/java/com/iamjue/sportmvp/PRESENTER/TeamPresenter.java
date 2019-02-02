@@ -94,7 +94,7 @@ public class TeamPresenter {
                                 teamObject.getString( "strInstagram" ),
                                 teamObject.getString( "strYoutube" ),
                                 teamObject.getString( "strTeamFanart1" ),
-                                teamObject.getString( "strWebsite" ));
+                                teamObject.getString( "strWebsite" ) );
 
 
                         teamItemArrayList.add( teamItem );

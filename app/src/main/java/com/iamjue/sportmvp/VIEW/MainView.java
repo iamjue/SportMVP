@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 public interface MainView {
     void showLeague(ArrayList<LeagueItem> leagueItem);
+
     void showTeam(ArrayList<TeamItem> teamItem);
+
     void showSquad(ArrayList<SquadItem> squadItem);
 }

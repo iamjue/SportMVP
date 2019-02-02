@@ -40,7 +40,7 @@ public class SquadAdapter extends RecyclerView.Adapter<SquadAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from( viewGroup.getContext() ).inflate( R.layout.row_squad,viewGroup,false );
+        View view = LayoutInflater.from( viewGroup.getContext() ).inflate( R.layout.row_squad, viewGroup, false );
         return new ViewHolder( view );
     }
 
@@ -50,14 +50,14 @@ public class SquadAdapter extends RecyclerView.Adapter<SquadAdapter.ViewHolder> 
         viewHolder.tvPosition.setText( getSquadItemArrayList().get( i ).getStrPosition() );
         viewHolder.tvNamePlayer.setText( getSquadItemArrayList().get( i ).getStrPlayer() );
         String haveData = getSquadItemArrayList().get( i ).getStrCutout();
-        String noData ="null";
+        String noData = "null";
 
         if (haveData == noData) {
-            viewHolder.imgPlayer.setImageResource( R.drawable.ic_sentiment_satisfied );
+            viewHolder.imgPlayer.setImageResource( R.drawable.ic_person_black );
 
-        }else {
+        } else {
 
-            Glide.with( context).load( getSquadItemArrayList().get( i ).getStrCutout() ).into( viewHolder.imgPlayer );
+            Glide.with( context ).load( getSquadItemArrayList().get( i ).getStrCutout() ).into( viewHolder.imgPlayer );
         }
 
     }
@@ -68,16 +68,16 @@ public class SquadAdapter extends RecyclerView.Adapter<SquadAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView( R.id.img_player )
+        @BindView(R.id.img_player)
         CircleImageView imgPlayer;
-        @BindView( R.id.tv_position )
+        @BindView(R.id.tv_position)
         TextView tvPosition;
-        @BindView( R.id.tv_namePlayer )
+        @BindView(R.id.tv_namePlayer)
         TextView tvNamePlayer;
 
         public ViewHolder(@NonNull View itemView) {
             super( itemView );
-            ButterKnife.bind( this,itemView );
+            ButterKnife.bind( this, itemView );
         }
     }
 }

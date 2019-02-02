@@ -48,10 +48,6 @@ public class LeagueActivity extends AppCompatActivity implements MainView {
         setContentView( R.layout.activity_league );
         ButterKnife.bind( this );
 
-        imgBadge = findViewById( R.id.img_strBadge );
-        tvLeague = findViewById( R.id.tv_strLeague );
-
-
         LeagueItem leagueItem = getIntent().getParcelableExtra( "League" );
         titleCountry = leagueItem.getStrCountry();
         getSupportActionBar().setTitle( titleCountry );

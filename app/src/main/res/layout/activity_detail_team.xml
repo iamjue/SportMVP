@@ -61,6 +61,7 @@
                             android:text="@string/team_name"
                             android:textAlignment="center"
                             android:textColor="@color/cyan"
+                            android:textSize="9pt"
                             android:textStyle="bold" />
 
                         <TextView
@@ -188,11 +189,29 @@
                 android:layout_below="@id/linear_banner"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/img_teamStadion"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginBottom="3dp" />
+                    android:layout_height="200dp">
+
+                    <ImageView
+                        android:id="@+id/img_teamStadion"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginBottom="3dp" />
+
+                    <TextView
+                        android:id="@+id/tv_notStadium"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="Stadium not found"
+                        android:textAlignment="center"
+                        android:textColor="#a7a0a0"
+                        android:textSize="11pt"
+                        android:textStyle="italic"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
 
                 <TextView
                     android:id="@+id/tv_nameStadionTeam"
@@ -208,19 +227,53 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/tv_stadiumLocation"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/stadium_location" />
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tv_stadiumCapacity"
+                        <TextView
+                            android:id="@+id/tv_stadiumLocation"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/stadium_location"
+                            android:textAlignment="center"
+                            android:textSize="7pt"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/stadium_location"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/stadium_capacity" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_stadiumCapacity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/stadium_capacity"
+                            android:textAlignment="center"
+                            android:textSize="7pt"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/stadium_capacity"
+                            android:textAlignment="center" />
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
                 <android.support.v4.widget.NestedScrollView

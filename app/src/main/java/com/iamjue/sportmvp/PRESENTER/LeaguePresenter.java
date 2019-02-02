@@ -62,9 +62,9 @@ public class LeaguePresenter {
         this.context = context;
     }
 
-    public void Load (String string){
+    public void Load(String string) {
         String URL = apiTheSportDb.getLeague( string );
-        final ArrayList<LeagueItem>leagueItems = new ArrayList<>(  );
+        final ArrayList<LeagueItem> leagueItems = new ArrayList<>();
 
         StringRequest stringRequest = new StringRequest( Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
@@ -72,7 +72,7 @@ public class LeaguePresenter {
                 try {
                     JSONObject object = new JSONObject( response );
                     JSONArray leagueArray = object.getJSONArray( "countrys" );
-                    for (int i = 0; i < leagueArray.length(); i++){
+                    for (int i = 0; i < leagueArray.length(); i++) {
                         JSONObject leagueObject = leagueArray.getJSONObject( i );
                         LeagueItem leagueItem = new LeagueItem( leagueObject.getString( "strLeague" ),
                                 leagueObject.getString( "strLogo" ),
@@ -81,7 +81,7 @@ public class LeaguePresenter {
                                 leagueObject.getString( "strPoster" ),
                                 leagueObject.getString( "strTrophy" ),
                                 leagueObject.getString( "strFanart1" ),
-                                leagueObject.getString( "strBadge" ));
+                                leagueObject.getString( "strBadge" ) );
 
                         leagueItems.add( leagueItem );
 
@@ -98,10 +98,10 @@ public class LeaguePresenter {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText( context, "Error", Toast.LENGTH_SHORT ).show();
             }
         } );
-        RequestQueue requestQueue = Volley.newRequestQueue(context);
-        requestQueue.add(stringRequest);
+        RequestQueue requestQueue = Volley.newRequestQueue( context );
+        requestQueue.add( stringRequest );
     }
 }

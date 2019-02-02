@@ -30,4 +30,5 @@
     <string name="salary">Salary :</string>
     <string name="height_and_weight">Height and Weight :</string>
     <string name="player_descripton">Player Descripton</string>
+    <string name="player_image_not_found">Player image not found</string>
 </resources>

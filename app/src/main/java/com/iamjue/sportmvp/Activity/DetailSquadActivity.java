@@ -52,8 +52,12 @@ public class DetailSquadActivity extends AppCompatActivity implements View.OnCli
     TextView tvPlayerSigning;
     @BindView(R.id.tv_playerWage)
     TextView tvPlayerWage;
+    @BindView(R.id.tv_notPlayer)
+    TextView tvNotPlayer;
     public static String EXTRA_FANART = "extra_fanart";
-    String fb, twitter, ig;
+    String fb, twitter, ig, cutout, player;
+    public final String noData = "null";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,16 +65,30 @@ public class DetailSquadActivity extends AppCompatActivity implements View.OnCli
         setContentView( R.layout.activity_detail_squad );
         ButterKnife.bind( this );
 
+        imgPlayerIg.setOnClickListener( this );
+        imgPlayerTwitter.setOnClickListener( this );
+        imgPlayerFb.setOnClickListener( this );
+
         SquadItem squadItem = getIntent().getParcelableExtra( "squadData" );
-        Glide.with( this )
-                .load( squadItem.getStrCutout() )
-                .into( imgPlayerCutout );
-        Glide.with( this )
-                .load( squadItem.getStrThumb() )
-                .into( imgPlayerThumb );
+
+        cutout = squadItem.getStrCutout();
+        if (cutout.equals( noData )) {
+            imgPlayerCutout.setImageResource( R.drawable.ic_person_white );
+        } else {
+            Glide.with( this ).load( cutout ).into( imgPlayerCutout );
+        }
+
+        player = squadItem.getStrThumb();
+        Glide.with( this ).load( player ).into( imgPlayerThumb );
+        if (player.equals( noData )) {
+            imgPlayerThumb.setVisibility( View.INVISIBLE );
+            tvNotPlayer.setVisibility( View.VISIBLE );
+        }
+
         Glide.with( this )
                 .load( getIntent().getStringExtra( EXTRA_FANART ) )
                 .into( imgPlayerTeam );
+
         tvPlayerName.setText( squadItem.getStrPlayer() );
         tvPlayerPosition.setText( squadItem.getStrPosition() );
         tvPlayerNameBio.setText( squadItem.getStrPlayer() );
@@ -85,21 +103,18 @@ public class DetailSquadActivity extends AppCompatActivity implements View.OnCli
 
         getSupportActionBar().setTitle( squadItem.getStrTeam() );
 
-        imgPlayerIg.setOnClickListener( this );
-        imgPlayerTwitter.setOnClickListener( this );
-        imgPlayerFb.setOnClickListener( this );
 
         fb = squadItem.getStrFacebook();
-        twitter = squadItem.getStrTwitter();
-        ig = squadItem.getStrInstagram();
-
-
         if (fb.isEmpty()) {
             imgPlayerFb.setVisibility( View.INVISIBLE );
         }
+
+        twitter = squadItem.getStrTwitter();
         if (twitter.isEmpty()) {
             imgPlayerTwitter.setVisibility( View.INVISIBLE );
         }
+
+        ig = squadItem.getStrInstagram();
         if (ig.isEmpty()) {
             imgPlayerIg.setVisibility( View.INVISIBLE );
         }

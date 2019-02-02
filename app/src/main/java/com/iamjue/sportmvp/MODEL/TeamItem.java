@@ -4,9 +4,9 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class TeamItem implements Parcelable {
-    String strTeam, strLeague,strManager,strStadium,strStadiumDescription,strStadiumLocation,intStadiumCapacity,strDescriptionEN,
-            strTeamBadge,strTeamJersey,strTeamLogo,strTeamBanner,strAlternate,strStadiumThumb,strFacebook,strTwitter,strInstagram,
-            strYoutube,strTeamFanart1,strWebsite;
+    String strTeam, strLeague, strManager, strStadium, strStadiumDescription, strStadiumLocation, intStadiumCapacity, strDescriptionEN,
+            strTeamBadge, strTeamJersey, strTeamLogo, strTeamBanner, strAlternate, strStadiumThumb, strFacebook, strTwitter, strInstagram,
+            strYoutube, strTeamFanart1, strWebsite;
 
     public TeamItem(String strTeam, String strLeague, String strManager, String strStadium, String strStadiumDescription,
                     String strStadiumLocation, String intStadiumCapacity, String strDescriptionEN, String strTeamBadge,

@@ -4,8 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class SquadItem implements Parcelable {
-   String strNationality,strPlayer,strTeam,dateBorn,dateSigned,strSigning,strBirthLocation,strDescriptionEN,strPosition,
-           strHeight,strWeight,strThumb,strCutout,strWage,strFacebook,strTwitter,strInstagram;
+    String strNationality, strPlayer, strTeam, dateBorn, dateSigned, strSigning, strBirthLocation, strDescriptionEN, strPosition,
+            strHeight, strWeight, strThumb, strCutout, strWage, strFacebook, strTwitter, strInstagram;
 
     public SquadItem(String strNationality, String strPlayer, String strTeam, String dateBorn, String dateSigned, String strSigning, String strBirthLocation, String strDescriptionEN, String strPosition, String strHeight, String strWeight, String strThumb, String strCutout, String strWage, String strFacebook, String strTwitter, String strInstagram) {
         this.strNationality = strNationality;

@@ -62,9 +62,9 @@ public class SquadPresenter {
         this.context = context;
     }
 
-    public void LoadSquad(String string){
+    public void LoadSquad(String string) {
         String URL = apiTheSportDb.getSquad( string );
-        final ArrayList<SquadItem>squadItemArrayList = new ArrayList<>(  );
+        final ArrayList<SquadItem> squadItemArrayList = new ArrayList<>();
 
         StringRequest stringRequest = new StringRequest( Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
@@ -87,10 +87,10 @@ public class SquadPresenter {
                                 squadObject.getString( "strWeight" ),
                                 squadObject.getString( "strThumb" ),
                                 squadObject.getString( "strCutout" ),
-                                squadObject.getString(  "strWage"),
+                                squadObject.getString( "strWage" ),
                                 squadObject.getString( "strFacebook" ),
                                 squadObject.getString( "strTwitter" ),
-                                squadObject.getString(  "strInstagram") );
+                                squadObject.getString( "strInstagram" ) );
                         squadItemArrayList.add( squadItem );
                     }
                     view.showSquad( squadItemArrayList );

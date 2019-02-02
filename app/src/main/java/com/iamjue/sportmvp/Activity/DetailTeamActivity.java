@@ -12,13 +12,50 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.iamjue.sportmvp.R;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DetailTeamActivity extends AppCompatActivity implements View.OnClickListener {
-    ImageView imgTeamFanart, imgBanner, imgJerseyTeam, imgTeamStadion, strYoutube, strFacebook, strTwitter, strInstagram, strWebsite;
+    @BindView(R.id.img_teamFanart)
+    ImageView imgTeamFanart;
+    @BindView(R.id.img_banner)
+    ImageView imgBanner;
+    @BindView(R.id.img_jerseyTeam)
+    ImageView imgJerseyTeam;
+    @BindView(R.id.img_teamStadion)
+    ImageView imgTeamStadion;
+    @BindView(R.id.img_youtube)
+    ImageView strYoutube;
+    @BindView(R.id.img_fb)
+    ImageView strFacebook;
+    @BindView(R.id.img_twiter)
+    ImageView strTwitter;
+    @BindView(R.id.img_ig)
+    ImageView strInstagram;
+    @BindView(R.id.img_web)
+    ImageView strWebsite;
+    @BindView(R.id.img_teamBadgeDetail)
     CircleImageView imgBadge;
-    TextView strTeam, strManager, strStadium, strStadiumDescription, strStadiumLocation, intStadiumCapacity, strDescriptionEN, tvNoBanner;
-    String youtube, ig, web, fb, twitter, banner;
+    @BindView(R.id.tv_teamNameDetail)
+    TextView strTeam;
+    @BindView(R.id.tv_teamManager)
+    TextView strManager;
+    @BindView(R.id.tv_nameStadionTeam)
+    TextView strStadium;
+    @BindView(R.id.tv_stadiumDesc)
+    TextView strStadiumDescription;
+    @BindView(R.id.tv_stadiumLocation)
+    TextView strStadiumLocation;
+    @BindView(R.id.tv_stadiumCapacity)
+    TextView intStadiumCapacity;
+    @BindView(R.id.tv_teamDesc)
+    TextView strDescriptionEN;
+    @BindView(R.id.tv_notBanner)
+    TextView tvNoBanner;
+    @BindView(R.id.tv_notStadium)
+    TextView tvNoStadium;
+    String youtube, ig, web, fb, twitter, banner, stadium;
     public static String EXTRA_NAME = "extra_name";
     public static String EXTRA_MANAGER = "extra_manager";
     public static String EXTRA_STADIUM_NAME = "extra_stadium_name";
@@ -37,80 +74,80 @@ public class DetailTeamActivity extends AppCompatActivity implements View.OnClic
     public static String EXTRA_WEBSITE = "extra_website";
     public static String EXTRA_FANART = "extra_fanart";
     public static String EXTRA_COUNTRY = "extra_country";
+    public final String noData = "null";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_detail_team );
-        imgBadge = findViewById( R.id.img_teamBadgeDetail );
-        imgBanner = findViewById( R.id.img_banner );
-        imgJerseyTeam = findViewById( R.id.img_jerseyTeam );
-        imgTeamFanart = findViewById( R.id.img_teamFanart );
-        imgTeamStadion = findViewById( R.id.img_teamStadion );
+        ButterKnife.bind( this );
 
-        strTeam = findViewById( R.id.tv_teamNameDetail );
-        strManager = findViewById( R.id.tv_teamManager );
-        strStadium = findViewById( R.id.tv_nameStadionTeam );
-        strStadiumDescription = findViewById( R.id.tv_stadiumDesc );
-        strStadiumLocation = findViewById( R.id.tv_stadiumLocation );
-        intStadiumCapacity = findViewById( R.id.tv_stadiumCapacity );
-        strDescriptionEN = findViewById( R.id.tv_teamDesc );
-        tvNoBanner =  findViewById( R.id.tv_notBanner);
-        strFacebook = findViewById( R.id.img_fb );
         strFacebook.setOnClickListener( this );
-        strInstagram = findViewById( R.id.img_ig );
         strInstagram.setOnClickListener( this );
-        strTwitter = findViewById( R.id.img_twiter );
         strTwitter.setOnClickListener( this );
-        strYoutube = findViewById( R.id.img_youtube );
         strYoutube.setOnClickListener( this );
-        strWebsite = findViewById( R.id.img_web );
         strWebsite.setOnClickListener( this );
 
         Glide.with( this )
                 .load( getIntent().getStringExtra( EXTRA_BADGE ) )
                 .into( imgBadge );
-        Glide.with( this )
-                .load(getIntent().getStringExtra( EXTRA_BANNER) )
-                .into( imgBanner );
+
+        banner = getIntent().getStringExtra( EXTRA_BANNER );
+        Glide.with( this ).load( banner ).into( imgBanner );
+        if (banner.equals( noData )) {
+            imgBanner.setVisibility( View.INVISIBLE );
+            tvNoBanner.setVisibility( View.VISIBLE );
+        }
+
         Glide.with( this )
                 .load( getIntent().getStringExtra( EXTRA_JERSEY ) )
                 .into( imgJerseyTeam );
+
         Glide.with( this )
                 .load( getIntent().getStringExtra( EXTRA_FANART ) )
                 .into( imgTeamFanart );
-        Glide.with( this )
-                .load( getIntent().getStringExtra( EXTRA_STADIUM_THUMB ) )
-                .into( imgTeamStadion );
+
+        stadium = getIntent().getStringExtra( EXTRA_STADIUM_THUMB );
+        Glide.with( this ).load( stadium ).into( imgTeamStadion );
+        if (stadium.equals( noData )) {
+            imgTeamStadion.setVisibility( View.INVISIBLE );
+            tvNoStadium.setVisibility( View.VISIBLE );
+        }
+
         String title = getIntent().getStringExtra( EXTRA_NAME ) + " - " + getIntent().getStringExtra( EXTRA_COUNTRY );
-        getSupportActionBar().setTitle( title);
+        getSupportActionBar().setTitle( title );
+
         strTeam.setText( getIntent().getStringExtra( EXTRA_NAME ) );
         strManager.setText( getIntent().getStringExtra( EXTRA_MANAGER ) );
         strStadium.setText( getIntent().getStringExtra( EXTRA_STADIUM_NAME ) );
         strStadiumDescription.setText( getIntent().getStringExtra( EXTRA_STADIUM_DESC ) );
-        strStadiumLocation.setText("Stadium Location :\n"+ getIntent().getStringExtra( EXTRA_STADIUM_LOCATION ) );
-        intStadiumCapacity.setText( "Stadium Capacity :\n"+getIntent().getStringExtra( EXTRA_STADIUM_CAPACITY ) );
+        strStadiumLocation.setText( getIntent().getStringExtra( EXTRA_STADIUM_LOCATION ) );
+        intStadiumCapacity.setText( getIntent().getStringExtra( EXTRA_STADIUM_CAPACITY ) + " person" );
         strDescriptionEN.setText( getIntent().getStringExtra( EXTRA_DESC ) );
 
         fb = getIntent().getStringExtra( EXTRA_FB );
-        twitter = getIntent().getStringExtra( EXTRA_TW );
-        ig = getIntent().getStringExtra( EXTRA_IG );
-        youtube = getIntent().getStringExtra( EXTRA_YOUTUBE );
-        web = getIntent().getStringExtra( EXTRA_WEBSITE );
-
         if (fb.isEmpty()) {
             strFacebook.setVisibility( View.INVISIBLE );
         }
-        if (twitter.isEmpty()){
+
+        twitter = getIntent().getStringExtra( EXTRA_TW );
+        if (twitter.isEmpty()) {
             strTwitter.setVisibility( View.INVISIBLE );
         }
-        if (ig.isEmpty()){
+
+        ig = getIntent().getStringExtra( EXTRA_IG );
+
+        if (ig.isEmpty()) {
             strInstagram.setVisibility( View.INVISIBLE );
         }
-        if (youtube.isEmpty()){
+
+        youtube = getIntent().getStringExtra( EXTRA_YOUTUBE );
+        if (youtube.isEmpty()) {
             strYoutube.setVisibility( View.INVISIBLE );
         }
-        if (web.isEmpty()){
+
+        web = getIntent().getStringExtra( EXTRA_WEBSITE );
+        if (web.isEmpty()) {
             strWebsite.setVisibility( View.INVISIBLE );
         }
 

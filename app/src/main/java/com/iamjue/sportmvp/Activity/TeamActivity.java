@@ -51,9 +51,6 @@ public class TeamActivity extends AppCompatActivity implements MainView {
         setContentView( R.layout.activity_team );
         ButterKnife.bind( this );
 
-        tvTeam = findViewById( R.id.tv_nameTeam );
-        imgTeamLogo = findViewById( R.id.img_teamLogo );
-
         TeamItem teamItem = getIntent().getParcelableExtra( "teamData" );
 
         strTeam = teamItem.getStrTeam();
@@ -76,7 +73,7 @@ public class TeamActivity extends AppCompatActivity implements MainView {
         country = getIntent().getStringExtra( EXTRA_TITLE_COUNTRY );
 
         //actionBar
-        getSupportActionBar().setTitle( teamItem.getStrTeam() );
+        getSupportActionBar().setTitle( teamItem.getStrLeague() );
 
         tvTeam.setText( teamItem.getStrTeam() );
         Glide.with( this ).load( teamItem.getStrTeamBadge() ).into( imgTeamLogo );
@@ -146,7 +143,7 @@ public class TeamActivity extends AppCompatActivity implements MainView {
         ItemClickSupport.addTo( rvSquad ).setOnItemClickListener( new ItemClickSupport.OnItemClickListener() {
             @Override
             public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                Intent intentSquad = new Intent (TeamActivity.this, DetailSquadActivity.class);
+                Intent intentSquad = new Intent( TeamActivity.this, DetailSquadActivity.class );
                 intentSquad.putExtra( DetailSquadActivity.EXTRA_FANART, strTeamFanart1 );
                 SquadItem squadData = new SquadItem( squadItem.get( position ).getStrNationality(),
                         squadItem.get( position ).getStrPlayer(),
@@ -161,11 +158,11 @@ public class TeamActivity extends AppCompatActivity implements MainView {
                         squadItem.get( position ).getStrWeight(),
                         squadItem.get( position ).getStrThumb(),
                         squadItem.get( position ).getStrCutout(),
-                        squadItem.get( position ).getStrWage() ,
+                        squadItem.get( position ).getStrWage(),
                         squadItem.get( position ).getStrFacebook(),
                         squadItem.get( position ).getStrTwitter(),
                         squadItem.get( position ).getStrInstagram() );
-                intentSquad.putExtra( "squadData",squadData );
+                intentSquad.putExtra( "squadData", squadData );
                 startActivity( intentSquad );
             }
         } );

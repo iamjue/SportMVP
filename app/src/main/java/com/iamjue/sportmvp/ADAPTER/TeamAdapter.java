@@ -43,7 +43,7 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Glide.with( context ).load( getTeamItemArrayList().get(i).getStrTeamBadge() ).into( viewHolder.imgTeamBadge );
+        Glide.with( context ).load( getTeamItemArrayList().get( i ).getStrTeamBadge() ).into( viewHolder.imgTeamBadge );
         viewHolder.tvStrteam.setText( getTeamItemArrayList().get( i ).getStrTeam() );
 
     }
@@ -54,13 +54,14 @@ public class TeamAdapter extends RecyclerView.Adapter<TeamAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView( R.id.img_TeamBadge )
+        @BindView(R.id.img_TeamBadge)
         CircleImageView imgTeamBadge;
-        @BindView( R.id.tv_strTeam )
+        @BindView(R.id.tv_strTeam)
         TextView tvStrteam;
+
         public ViewHolder(@NonNull View itemView) {
             super( itemView );
-            ButterKnife.bind(this,itemView);
+            ButterKnife.bind( this, itemView );
         }
     }
 }
